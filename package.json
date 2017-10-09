@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "Informs you in a telegram-bot, if a new apartment at ETH is available.",
   "main": "index.js",
-  "scripts": {
-    "test": "test"
+  "dependencies": {
+    "nstore": "0.5.2",
+    "jquery": "3.2.1",
+    "jsdom": "11.3.0",
+    "node-telegram-bot-api": "0.28.0",
+    "request": "2.83.0"
   },
   "repository": {
     "type": "git",
