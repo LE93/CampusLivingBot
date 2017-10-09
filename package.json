@@ -1,0 +1,26 @@
+{
+  "name": "campuslivingbot",
+  "version": "1.0.0",
+  "description": "Informs you in a telegram-bot, if a new apartment at ETH is available.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LE93/CampusLivingBot.git"
+  },
+  "keywords": [
+    "ETH",
+    "apartment",
+    "livingscience",
+    "available",
+    "room"
+  ],
+  "author": "Luca Egli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LE93/CampusLivingBot/issues"
+  },
+  "homepage": "https://github.com/LE93/CampusLivingBot#readme"
+}
