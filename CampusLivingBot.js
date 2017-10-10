@@ -20,8 +20,9 @@ const link = "http://reservation.livingscience.ch/wohnen";
 
 bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
-    Store.saveId(chatId, function (err) {
-        var message = "Welcome.\n\nFrom now on I will inform you whenever new rooms are available. To see all the details click [here](" + link + ").\n\n*Commands:*\n";
+    const firstName = msg.chat.first_name;
+    Store.saveUser(firstName, msg.chat.last_name, chatId, function (err) {
+        var message = "Welcome " + firstName + ".\n\nFrom now on I will inform you whenever new rooms are available. To see all the details click [here](" + link + ").\n\n*Commands:*\n";
         message += "/stop - To unsubscribe.\n";
         message += "/rooms - To see all available rooms.\n";
         message += "/help - To see all commands.";
@@ -81,8 +82,9 @@ bot.onText(/\/help/, (msg) => {
 
 bot.onText(/\/stop/, (msg) => {
     const chatId = msg.chat.id;
-    Store.removeId(chatId,function (err) {
-        var response = "Bye, bye. You'll no longer receive any messages about new rooms.\n\nJust type /start to resubscribe.";
+    const firstName = msg.chat.first_name;
+    Store.removeUser(chatId,function (err) {
+        var response = "Bye, bye " + firstName + ". You'll no longer receive any messages about new rooms.\n\nJust type /start to resubscribe.";
         if (err) {
             if (err==1){
                 response = "You are not registered.\nJust type /start to resubscribe."
@@ -104,16 +106,16 @@ module.exports = {
             msg = "There are " + nNewRooms + " new rooms available.";
         }
         msg += "\n_Check it out_ [here](" + link + ").";
-        Store.getIds(function (err, chatIds) {
+        Store.getUsers(function (err, users) {
             if (err) {
                 console.error(err);
                 this.sendErrorMessage(err);
             }
             else {
-                chatIds.forEach(function(id){
-                    bot.sendMessage(id, msg, {parse_mode : "Markdown"}).catch((error) => {
+                users.forEach(function(user){
+                    bot.sendMessage(user.chatId, msg, {parse_mode : "Markdown"}).catch((error) => {
                         if (error.code == 'ETELEGRAM'){
-                            Store.removeId(id, function (err) {
+                            Store.removeUser(user.chatId, function (err) {
                                 if (err) {
                                     console.error(err);
                                     this.sendErrorMessage(err);

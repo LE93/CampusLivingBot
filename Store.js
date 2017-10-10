@@ -1,6 +1,6 @@
 // Init document store
 var nStore = require('nstore');
-const idsStoreKey = "chatIds";
+const idsStoreKey = "users";
 const nRoomsStoreKey = "nRooms";
 
 // Create a store
@@ -23,18 +23,19 @@ var mainStore = nStore.new('MainStore.db', function () {
 
 module.exports = {
 
-    saveId: function (id, eventHandler) {
-        this.getIds(function (err, chatIds) {
+    saveUser: function (firstName, lastName, id, eventHandler) {
+        this.getUsers(function (err, users) {
             if (err) {
                 eventHandler(err);
             }
             else {
-                if (chatIds.indexOf(id) != -1){
+                if (users.indexOf(users.find(u => u.chatId==id)) != -1){
                     eventHandler(1);
                 }
                 else {
-                    chatIds.push(id);
-                    mainStore.save(idsStoreKey, chatIds, function (err) {
+                    const newPerson = {firstName:firstName, lastName:lastName, chatId:id};
+                    users.push(newPerson);
+                    mainStore.save(idsStoreKey, users, function (err) {
                         if (err) {
                             eventHandler(err);
                         }
@@ -47,31 +48,30 @@ module.exports = {
         });
     },
 
-    getIds: function (eventHandler) {
-        mainStore.get(idsStoreKey, function (err, chatIds) {
+    getUsers: function (eventHandler) {
+        mainStore.get(idsStoreKey, function (err, users) {
             if (err){
                 eventHandler(err);
             }
             else {
-                eventHandler(null, chatIds);
+                eventHandler(null, users);
             }
         });
     },
 
-    removeId: function (id, eventHandler) {
-        this.getIds(function (err, chatIds) {
+    removeUser: function (id, eventHandler) {
+        this.getUsers(function (err, users) {
             if (err) {
-                console.log("1");
                 eventHandler(err);
             }
             else {
-                const index = chatIds.indexOf(id);
+                const index = users.indexOf(users.find(u => u.chatId==id));
                 if (index == -1){
                     eventHandler(1);
                 }
                 else {
-                    chatIds.splice(index);
-                    mainStore.save(idsStoreKey, chatIds, function (err) {
+                    users.splice(index);
+                    mainStore.save(idsStoreKey, users, function (err) {
                         if (err) {
                             eventHandler(err);
                         }
