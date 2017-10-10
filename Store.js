@@ -9,13 +9,13 @@ var mainStore = nStore.new('data/MainStore.db', function () {
         if (err){
             mainStore.save(idsStoreKey, [], function (err) {
                 if (err) { console.error(err); }
-                mainStore.get(nRoomsStoreKey, function (err){
-                    if (err){
-                        mainStore.save(nRoomsStoreKey, 0, function (err) {
-                            if (err) { console.error(err); }
-                        });
-                    }
-                });
+            });
+        }
+    });
+    mainStore.get(nRoomsStoreKey, function (err){
+        if (err){
+            mainStore.save(nRoomsStoreKey, 0, function (err) {
+                if (err) { console.error(err); }
             });
         }
     });
