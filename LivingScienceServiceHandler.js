@@ -17,7 +17,7 @@ module.exports = {
             url: 'http://reservation.livingscience.ch/dynasite.cfm?cmd=cimmotool_immotool_immotool_search&dsmid=509228&skipfurl=1',
             method: 'POST',
             headers: headers,
-            form: {'cimmotool_objekt': '', 'cimmotool_etage':'', 'cimmotool_status':'1'}
+            form: {'cimmotool_objekt': '', 'cimmotool_etage':'', 'cimmotool_status':'3'}
         };
 
         // Start the request
