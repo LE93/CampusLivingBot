@@ -3,8 +3,8 @@ var nStore = require('nstore');
 const idsStoreKey = "users";
 const nRoomsStoreKey = "nRooms";
 
-// Create a store 
-var mainStore = nStore.new('data/MainStore.db', function () {
+// Create a store
+var mainStore = nStore.new('/data/MainStore.db', function () {
     mainStore.get(idsStoreKey, function (err){
         if (err){
             mainStore.save(idsStoreKey, [], function (err) {
