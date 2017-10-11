@@ -1,5 +1,6 @@
 // Path for configs
 const paths = require('./pathsConfig.json');
+// Load service-configurations.
 const svcConfig = require(paths.svcConfig);
 
 const request = require('request');
