@@ -1,3 +1,7 @@
+// Path for configs
+const paths = require('./pathsConfig.json');
+const svcConfig = require(paths.svcConfig);
+
 const request = require('request');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
@@ -14,10 +18,10 @@ module.exports = {
 
         // Configure the request
         var options = {
-            url: 'http://reservation.livingscience.ch/dynasite.cfm?cmd=cimmotool_immotool_immotool_search&dsmid=509228&skipfurl=1',
+            url: svcConfig.endpointURL,
             method: 'POST',
             headers: headers,
-            form: {'cimmotool_objekt': '', 'cimmotool_etage':'', 'cimmotool_status':'3'}
+            form: {'cimmotool_objekt': '', 'cimmotool_etage':'', 'cimmotool_status':svcConfig.roomStatus}
         };
 
         // Start the request
