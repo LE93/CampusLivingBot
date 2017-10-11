@@ -1,8 +1,10 @@
+# Project
+MainStore.db
+botConfig.json
+svcConfig.json
+
 # JetBrains
 .idea
-
-# nStore
-*.db
 
 # Mac
 .DS_Store

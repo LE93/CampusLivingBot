@@ -1,3 +1,7 @@
+// Path for configs
+const paths = require('./pathsConfig.json');
+const botConfig = require('./'+paths.botConfig);
+
 // My id for sending error-messages
 const myId = 42324764;
 
@@ -11,7 +15,7 @@ const svcHandler = require('./LivingScienceServiceHandler');
 const TelegramBot = require('node-telegram-bot-api');
 
 // replace the value below with the Telegram token you receive from @BotFather
-const token = '478762323:AAE30NnXIxVP-VXjuyEGJ26DQlNNXs5wh2s';
+const token = botConfig.token;
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});

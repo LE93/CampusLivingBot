@@ -1,10 +1,14 @@
+// Path for configs
+const paths = require('./pathsConfig.json');
+
 // Init document store
 var nStore = require('nstore');
 const idsStoreKey = "users";
 const nRoomsStoreKey = "nRooms";
 
+
 // Create a store
-var mainStore = nStore.new('/data/MainStore.db', function () {
+var mainStore = nStore.new(paths.mainStore, function () {
     mainStore.get(idsStoreKey, function (err){
         if (err){
             mainStore.save(idsStoreKey, [], function (err) {
