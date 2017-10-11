@@ -1,6 +1,6 @@
 // Path for configs
 const paths = require('./pathsConfig.json');
-const svcConfig = require('./'+paths.svcConfig);
+const svcConfig = require(paths.svcConfig);
 
 const request = require('request');
 const jsdom = require("jsdom");

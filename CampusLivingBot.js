@@ -1,6 +1,6 @@
 // Path for configs
 const paths = require('./pathsConfig.json');
-const botConfig = require('./'+paths.botConfig);
+const botConfig = require(paths.botConfig);
 
 // My id for sending error-messages
 const myId = 42324764;
