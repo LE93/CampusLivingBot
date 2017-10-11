@@ -1,5 +1,5 @@
 {
-  "mainStore" : "MainStore.db",
-  "svcConfig" : "./config/svcConfig.json",
-  "botConfig" : "./config/data/botConfig.json"
+  "mainStore" : "/data/MainStore.db",
+  "svcConfig" : "/data/svcConfig.json",
+  "botConfig" : "/data/data/botConfig.json"
 }
