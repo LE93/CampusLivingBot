@@ -18,7 +18,7 @@ There are 2 config-files that have to be created manually and their location and
 ### 3.1. Webservice
 The webservice config-file is a json-file containing the endpoint of the webservice as well as the room-status that will be queried.
 
-Possible status are: "1" = *frei*, "2" = *reserviert*, "3" = *besetzt*, "" = *alle*.
+Possible status are: "1" = *frei*, "2" = *reserviert*, "3" = *vermietet*, "" = *alle*.
 
 Example (use exactley these keys):
 ```json
