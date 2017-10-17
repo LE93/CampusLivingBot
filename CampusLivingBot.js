@@ -74,7 +74,8 @@ bot.onText(/\/rooms/, (msg) => {
                     }
                     msg += "_[" + (nRooms - 10) + " more]_ ";
                 }
-                msg += "_Check it out_ [here](" + link + ").";
+                msg += (nRooms==1)? "_Check it " : "_Check them ";
+                msg += "out_ [here](" + link + ").";
             }
             bot.sendMessage(chatId, msg, {parse_mode : "Markdown"});
         }
