@@ -54,10 +54,13 @@ module.exports = {
         const { window } = new JSDOM(data);
         var $ = require('jquery')(window);
         $.each($("div.row[class*='status']"), function(index, room){
-            var houseNr = $($(room).find('span')[0]).text();
-            var whgNr = $($(room).find('span')[2]).text();
-            var roomNr = $($(room).find('span')[4]).text();
-            rooms.push(new Room(houseNr.replace("Haus Nr. :",""), whgNr.replace("Whg. Nr.:",""), roomNr.replace("Zim.-Nr.:","")));
+            var roomNr = $($(room).find('span')[2]).text();
+            var size = $($(room).find('span')[6]).text();
+            var level = $($(room).find('span')[8]).text();
+            var priceRent = $($(room).find('span')[10]).text();
+            var priceOther = $($(room).find('span')[12]).text();
+            var totalPrice = parseFloat(priceRent.replace("Bruttomiete:CHF ","")) + parseFloat(priceOther.replace("NK:CHF ",""));
+            rooms.push(new Room(roomNr.replace("Whg. Nr.:",""), size.replace("Grösse:ca. ",""), level.replace("Etage:",""), totalPrice));
         });
         return rooms;
     }
