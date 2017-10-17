@@ -18,7 +18,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const token = botConfig.token;
 
 // Create a bot that uses 'polling' to fetch new updates
-const bot = new TelegramBot(token, {polling: true});
+const bot = new TelegramBot(token, {polling: true, interval: 10});
 
 const link = "http://reservation.livingscience.ch/wohnen";
 
@@ -57,8 +57,8 @@ bot.onText(/\/rooms/, (msg) => {
             if (nRooms > 0){
                 msg = (nRooms==1)? "Only this room is available:" : "These " + nRooms + " rooms are available:\n";
                 if (nRooms<11){
-                    nRooms.forEach(function (id, room) {
-                        msg += room + "\n";
+                    rooms.forEach(function (room) {
+                        msg += room.toString() + "\n";
                     });
                 }
                 else {
