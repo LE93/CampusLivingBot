@@ -1,5 +1,11 @@
 // Path for configs
-const paths = require('./pathsConfig.json');
+var paths;
+try {
+    paths = require('./local-pathsConfig.json');
+}
+catch (ex){
+    paths = require('./pathsConfig.json');
+}
 
 // Init document store
 var nStore = require('nstore');

@@ -1,5 +1,12 @@
 // Path for configs
-const paths = require('./pathsConfig.json');
+var paths;
+try {
+    paths = require('./local-pathsConfig.json');
+}
+catch (ex){
+    paths = require('./pathsConfig.json');
+}
+
 const botConfig = require(paths.botConfig);
 
 // My id for sending error-messages
@@ -55,7 +62,7 @@ bot.onText(/\/rooms/, (msg) => {
             const nRooms = rooms.length;
             var msg = "Sorry there are no rooms available.";
             if (nRooms > 0){
-                msg = (nRooms==1)? "Only this room is available:" : "These " + nRooms + " rooms are available:\n";
+                msg = (nRooms==1)? "Only this room is available:\n" : "These " + nRooms + " rooms are available:\n";
                 if (nRooms<11){
                     rooms.forEach(function (room) {
                         msg += room.toString() + "\n";
