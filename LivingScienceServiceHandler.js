@@ -57,10 +57,10 @@ module.exports = {
             var roomNr = $($(room).find('span')[2]).text();
             var size = $($(room).find('span')[6]).text();
             var level = $($(room).find('span')[8]).text();
-            var priceRent = $($(room).find('span')[10]).text();
-            var priceOther = $($(room).find('span')[12]).text();
-            var totalPrice = parseFloat(priceRent.replace("Bruttomiete:CHF ","")) + parseFloat(priceOther.replace("NK:CHF ",""));
-            rooms.push(new Room(roomNr.replace("Whg. Nr.:",""), size.replace("Grösse:ca. ",""), level.replace("Etage:",""), totalPrice));
+            var rent = $($(room).find('span')[10]).text();
+            var otherCosts = $($(room).find('span')[12]).text();
+            var totalRent = parseFloat(rent.replace("Bruttomiete:CHF ","")) + parseFloat(otherCosts.replace("NK:CHF ",""));
+            rooms.push(new Room(roomNr.replace("Whg. Nr.:",""), size.replace("Grösse:ca. ",""), level.replace("Etage:",""), totalRent));
         });
         return rooms;
     }

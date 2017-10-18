@@ -1,12 +1,12 @@
-function Room(room, size, level, price) {
+function Room(room, size, level, rent) {
     this.room = room;
     this.size = size;
     this.level = level;
-    this.price = price;
+    this.rent = rent;
 }
 
 Room.prototype.toString = function () {
-  return "Zimmer " + this.room + ", Grösse: " + this.size + ", Etage: " + this.level + ", Preis: CHF " + this.price + "."
+  return "Zimmer " + this.room + ", Grösse: " + this.size + ", Etage: " + this.level + ", Miete: CHF " + this.rent + "."
 };
 
 module.exports = Room;
