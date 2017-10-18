@@ -1,11 +1,21 @@
+// Path for configs
+var paths;
+try {
+    paths = require('./local-pathsConfig.json');
+}
+catch (ex){
+    paths = require('./pathsConfig.json');
+}
+
+
+const svcConfig = require(paths.svcConfig);
 const Store = require('./Store');
 const svcHandler = require('./LivingScienceServiceHandler');
 const telegramBot = require('./CampusLivingBot');
 
-const pollInterval = 5;
-
 setInterval(
     function () {
+        console.log("Hello");
         Store.getNumberOfRooms(function (error, nStoredRooms) {
             if (error) {
                 console.error(error);
@@ -35,5 +45,5 @@ setInterval(
             }
         });
     },
-    pollInterval*6000
+    svcConfig.pollInterval*60000
 );
