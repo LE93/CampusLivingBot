@@ -113,11 +113,11 @@ bot.onText(/\/stop/, (msg) => {
 module.exports = {
     
     contactTelegramUsers: function (nNewRooms) {
-        var msg = "There is a new room available.";
+        var msg = "There is a new room available.\n_Check it out_";
         if (nNewRooms > 1){
-            msg = "There are " + nNewRooms + " new rooms available.";
+            msg = "There are " + nNewRooms + " new rooms available.\n_Check them out_";
         }
-        msg += "\n_Check it out_ [here](" + link + ").";
+        msg += " [here](" + link + ").";
         Store.getUsers(function (err, users) {
             if (err) {
                 console.error(err);
