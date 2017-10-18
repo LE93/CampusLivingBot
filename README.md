@@ -1,7 +1,7 @@
 # CampusLivingBot
 This bot informs you whenever a new room in an apartment at ETH is available.
 
-It uses a Node.js-server that polls the ETH-website every 5 minutes.
+It uses a Node.js-server that polls the ETH-website every few minutes (configurable).
 Whenever a new room is available, a message will be sent to all registered-users using the Telegram-bot.
 
 ## 1. Bot
