@@ -16,24 +16,30 @@ To use the bot just open [this](https://t.me/CampusLivingBot) link in [Telegram]
 ## 3. Project configuration
 There are 2 config-files that have to be created manually and their location and names must be specified in *pathsConfig.json* (or *local-pathsConfig.json*).
 ### 3.1. Webservice
-The webservice config-file is a json-file containing the endpoint of the webservice as well as the room-status that will be queried.
+The webservice config-file is a json-file containing the endpoint of the webservice, the room-status that will be queried and the poll-interval.
 
-Possible status are: "1" = *frei*, "2" = *reserviert*, "3" = *besetzt*, "" = *alle*.
+Possible room-status are: "1" = *frei*, "2" = *reserviert*, "3" = *besetzt*, "" = *alle*.
+
+The poll-interval (in minutes) specifies how often the available rooms are queried.
 
 Example (use exactley these keys):
 ```json
 {
   "endpointURL":"http://my-http-endpoint.com",
-  "roomStatus":"2"
+  "roomStatus":"2",
+  "pollInterval":5
 }
 ```
 ### 3.2. Telegram-bot
-The Telegram-bot config-file is a json-file containing the token provided by the holy [BotFather](https://t.me/BotFather).
+The Telegram-bot config-file is a json-file containing the token provided by the holy [BotFather](https://t.me/BotFather) as well a Telegram-chatId that will be used for error-messages.
+
+Find out your chatId and specify it in the config-file, so that the bot can send you error-messages when something's gone awry.
 
 Example (use exactley these keys):
 ```json
 {
-  "token":"1234abc"
+  "token":"1234abc",
+  "errorId":11111111
 }
 ```
 ### 3.3. Paths
