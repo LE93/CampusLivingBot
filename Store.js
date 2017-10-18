@@ -80,7 +80,7 @@ module.exports = {
                     eventHandler(1);
                 }
                 else {
-                    users.splice(index);
+                    users.splice(index,1);
                     mainStore.save(idsStoreKey, users, function (err) {
                         if (err) {
                             eventHandler(err);
