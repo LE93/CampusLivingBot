@@ -29,7 +29,7 @@ Example (use exactley these keys):
 }
 ```
 ### 3.2. Telegram-bot
-The Telegram-bot config-file is a json-file containing the token provided by the holy [BotFather](https://t.me/BotFather) as well a Telegram-chatId that will be used for error-messages.
+The Telegram-bot config-file is a json-file containing the token provided by the holy [BotFather](https://t.me/BotFather) as well as a Telegram-chatId that will be used for error-messages.
 
 Find out your chatId and specify it in the config-file, so that the bot can send you error-messages when something's gone awry.
 
