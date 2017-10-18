@@ -18,9 +18,7 @@ There are 2 config-files that have to be created manually and their location and
 ### 3.1. Webservice
 The webservice config-file is a json-file containing the endpoint of the webservice, the room-status that will be queried and the poll-interval.
 
-Possible room-status are: "1" = *frei*, "2" = *reserviert*, "3" = *besetzt*, "" = *alle*.
-
-The poll-interval (in minutes) specifies how often the available rooms are queried.
+Possible status are: "1" = *frei*, "2" = *reserviert*, "3" = *vermietet*, "" = *alle*.
 
 Example (use exactley these keys):
 ```json
