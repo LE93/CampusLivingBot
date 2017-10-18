@@ -9,9 +9,6 @@ catch (ex){
 
 const botConfig = require(paths.botConfig);
 
-// My id for sending error-messages
-const myId = 42324764;
-
 // Init Store
 const Store = require('./Store');
 
@@ -145,7 +142,7 @@ module.exports = {
     },
 
     sendErrorMessage: function (err) {
-        bot.sendMessage(myId, err.toString());
+        bot.sendMessage(bot.errorId, err.toString());
     }
     
 };
