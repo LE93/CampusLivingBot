@@ -15,7 +15,6 @@ const telegramBot = require('./CampusLivingBot');
 
 setInterval(
     function () {
-        console.log("Hello");
         Store.getNumberOfRooms(function (error, nStoredRooms) {
             if (error) {
                 console.error(error);
