@@ -49,13 +49,12 @@ bot.onText(/\/start/, (msg) => {
 
 bot.onText(/\/rooms/, (msg) => {
     const chatId = msg.chat.id;
-    svcHandler.fetchAvailableRoomData(function (err, data) {
-        if (err) {
+    svcHandler.fetchRooms(function (error, rooms) {
+        if (error){
             console.error(err);
             this.sendErrorMessage(err);
         }
         else {
-            var rooms = svcHandler.getRooms(data);
             const nRooms = rooms.length;
             var msg = "Sorry there are no rooms available.";
             if (nRooms > 0){
@@ -112,7 +111,7 @@ bot.onText(/\/show (.+)/, (msg,match) => {
     const baseUrl = 'http://reservation.livingscience.ch/mm/';
     const roomId = match[1];
 
-    svcHandler.getRoom(roomId, function (error, room) {
+    svcHandler.fetchRoom(roomId, function (error, room) {
         if (error || !room){
             var response = "The specified room '" + roomId + "' doesn't exist.\nPlease try again or send /help to get instructions.";
             if (error){
