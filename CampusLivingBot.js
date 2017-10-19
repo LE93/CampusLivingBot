@@ -122,7 +122,6 @@ bot.onText(/\/show (.+)/, (msg,match) => {
             bot.sendMessage(chatId, response);
         }
         else {
-            console.log(room);
             const level = room.level;
             const linkDetail = baseUrl + roomId.split('.').join('-') + '.png';
             const linkBuilding = baseUrl + roomId.substring(0,2) + '-' + level.toLowerCase().replace('. ','') + '.png';
