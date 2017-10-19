@@ -107,6 +107,32 @@ bot.onText(/\/stop/, (msg) => {
     });
 });
 
+bot.onText(/\/show (.+)/, (msg,match) => {
+    const chatId = msg.chat.id;
+    const baseUrl = 'http://reservation.livingscience.ch/mm/';
+    const roomId = match[1];
+
+    svcHandler.getRoom(roomId, function (error, room) {
+        if (error || !room){
+            var response = "The specified room '" + roomId + "' doesn't exist.\nPlease try again or send /help to get instructions.";
+            if (error){
+                response = "Sorry, something went wrong. Please try again later.";
+                this.sendErrorMessage(err);
+            }
+            bot.sendMessage(chatId, response);
+        }
+        else {
+            console.log(room);
+            const level = room.level;
+            const linkDetail = baseUrl + roomId.split('.').join('-') + '.png';
+            const linkBuilding = baseUrl + roomId.substring(0,2) + '-' + level.toLowerCase().replace('. ','') + '.png';
+
+            bot.sendPhoto(chatId, linkBuilding);
+            bot.sendPhoto(chatId, linkDetail);
+        }
+    });
+});
+
 module.exports = {
     
     contactTelegramUsers: function (nNewRooms) {

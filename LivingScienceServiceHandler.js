@@ -63,6 +63,19 @@ module.exports = {
             rooms.push(new Room(roomNr.replace("Whg. Nr.:",""), size.replace("Grösse:ca. ",""), level.replace("Etage:",""), totalRent));
         });
         return rooms;
+    },
+
+    getRoom: function (id, eventHandler) {
+        var self = this;
+        self.fetchAvailableRoomData(function (error, data) {
+            if (error){
+                eventHandler(error);
+            }
+            else {
+                var rooms = self.getRooms(data);
+                eventHandler(null, rooms.find(r => r.room == id));
+            }
+        })
     }
 
 };
