@@ -53,6 +53,7 @@ Example (use exactley these keys):
     }
 }
 ```
+*The webHook will be set to: 'webHook.baseUrl + token'. That's where Telegram will send the messages.*
 ### 3.3. Paths
 Open the *default.pathsConfig.json*-file (or create a *pathsConfig.json*-file in the root directory) and specify the location and name of all the config-files (see 2.1 & 2.2).
 
