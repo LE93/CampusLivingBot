@@ -28,9 +28,6 @@ var bot;
 if (botConfig.webHook){
     const hookConfig = botConfig.webHook;
     bot = new TelegramBot(token, hookConfig.options);
-    bot.setWebHook(hookConfig.baseUrl + token, {
-        certificate: hookConfig.options.webHook.cert
-    });
     const reqOpts = {
         url: "https://api.telegram.org/bot" + token + "/setWebhook?url=" + hookConfig.baseUrl + token,
         method: "POST"
