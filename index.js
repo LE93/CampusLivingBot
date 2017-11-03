@@ -1,10 +1,10 @@
 // Path for configs
 var paths;
 try {
-    paths = require('./local-pathsConfig.json');
+    paths = require('./pathsConfig.json');
 }
 catch (ex){
-    paths = require('./pathsConfig.json');
+    paths = require('./default.pathsConfig.json');
 }
 
 

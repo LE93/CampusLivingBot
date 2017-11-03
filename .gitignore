@@ -2,7 +2,7 @@
 MainStore.db
 botConfig.json
 svcConfig.json
-local-pathsConfig.json
+pathsConfig.json
 
 # JetBrains
 .idea
